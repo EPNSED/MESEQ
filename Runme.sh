@@ -19,9 +19,7 @@ do
   Output=$(sbatch <Hsat2Run.sh)
   JobID=$(echo $Output|cut -d " " -f 4)
   Dependency="${Dependency}:${JobID}"
-  echo "$Dependency"
   CountInput="${CountInput} ${JobName}.sam "
-  echo "$CountInput"
 done
 echo "#!/bin/bash">CountRun.sh
 echo "#SBATCH --job-name=Counts">>CountRun.sh
