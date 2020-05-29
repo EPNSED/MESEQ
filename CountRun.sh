@@ -13,4 +13,4 @@
 
 module use /apps/Compilers/modules-3.2.10/Debug-Build/Modules/3.2.10/modulefiles
 module load Compilers/Python3.6
-htseq-count -n 12 -f sam -m union -s reverse  aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam  HSNipah/HSNipah.gtf > aligned/counts.txt
+htseq-count -n 12 -f sam -m union -s reverse  aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam aligned/home.sam  HSNipah/HSNipah.gtf > aligned/counts.txt
