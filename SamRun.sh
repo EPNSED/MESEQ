@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Counts
+#SBATCH --job-name=SamTools
 #SBATCH -o /home/users/medwards38/TB/RNAseq/data/NewRun//BatchOut/Counts-%N.%j.stdout
 #SBATCH -e /home/users/medwards38/TB/RNAseq/data/NewRun//BatchErr/Counts-%N.%j.stderr
 #SBATCH --nodes=1
@@ -12,5 +12,6 @@
 #SBATCH -p qHM
 
 module use /apps/Compilers/modules-3.2.10/Debug-Build/Modules/3.2.10/modulefiles
-module load Compilers/Python3.6
-htseq-count -n 12 -f sam -m union -s reverse  /home/users/medwards38/TB/RNAseq/data/NewRun//Aligned/.bam /home/users/medwards38/TB/RNAseq/data/NewRun//Aligned/.bam /home/users/medwards38/TB/RNAseq/data/NewRun//Aligned/.bam /home/users/medwards38/TB/RNAseq/data/NewRun//Aligned/.bam  HSNipah/HSNipah.gtf > /home/users/medwards38/TB/RNAseq/data/NewRun//Aligned/counts.txt
+module load BioInformatics/Samtools1.3.1
+samtools view -b /home/users/medwards38/TB/RNAseq/data/NewRun//Aligned/DdapB_3_d7_MX29_L005.sam > /home/users/medwards38/TB/RNAseq/data/NewRun//Aligned/DdapB_3_d7_MX29_L005.bam
+samtools sort -n -O bam -o /home/users/medwards38/TB/RNAseq/data/NewRun//Aligned/DdapB_3_d7_MX29_L005_sorted.bam -T DdapB_3_d7_MX29_L005
