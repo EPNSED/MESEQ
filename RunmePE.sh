@@ -128,7 +128,7 @@ while read line; do echo -e "$line" >>SamRun.sh ;  done < JobSubmit.sh
 echo "module use /apps/Compilers/modules-3.2.10/Debug-Build/Modules/3.2.10/modulefiles">>SamRun.sh
 echo "module load BioInformatics/Samtools1.3.1">>SamRun.sh
 echo "samtools view -b "$Aligned"/"$JobName".sam > "$Aligned"/"$JobName".bam" >>SamRun.sh
-echo "samtools sort -n -O bam -o "$Aligned"/"$JobName"_sorted.bam -T "$JobName>>SamRun.sh
+echo "samtools sort -n -O bam -m 36G -o "$Aligned"/"$JobName"_sorted.bam -T "$JobName $JobName".bam">>SamRun.sh
 Dependency="${Dependency_base}:${ID}"
 Output="sbatch "$Dependency"<SamRun.sh"
 Output=$(eval "$Output")
