@@ -116,7 +116,8 @@ do
   Output="sbatch "$DependencyIndex"<Hisat2Run.sh"
   Output=$(eval "$Output")
   ID=$(echo $Output|cut -d " " -f 4)
-  CountInput="$CountInput $Aligned/$JobName_sorted.bam "
+  NewFile=$Aligned"/"$JobName"_sorted.bam"
+  CountInput=$CountInput$NewFile" "
 printf " Job submitted to the cluster. JobID %s assigned to the job. \e[1;32m Note the JobID , there will be corresponding std input/output in the BatchOut directory.\e[0m You can monitor the progress of the current job using \e[1;34msqueue %s \e[0m\n\n\n" "$ID" "$ID"
 
 
@@ -149,7 +150,7 @@ echo "#SBATCH -e "$base_dir"/BatchErr/Counts-%N.%j.stderr">>CountRun.sh
 while read line; do echo -e "$line" >>CountRun.sh ;  done < JobSubmit.sh
 echo "module use /apps/Compilers/modules-3.2.10/Debug-Build/Modules/3.2.10/modulefiles">>CountRun.sh
 echo "module load Compilers/Python3.6">>CountRun.sh
-echo "htseq-count -n 12 -f sam -m union -s reverse "$CountInput " HSNipah/HSNipah.gtf > "$Aligned"/counts.txt">>CountRun.sh
+echo "htseq-count -n 12 -f sam -m union -s reverse -r "$CountInput  $Reference"/HSNipah.gtf > "$Aligned"/counts.txt">>CountRun.sh
 sbatch $DependencySam CountRun.sh
 
 exit 0
