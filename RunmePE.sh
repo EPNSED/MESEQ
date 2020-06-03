@@ -150,7 +150,7 @@ echo "#SBATCH -e "$base_dir"/BatchErr/Counts-%N.%j.stderr">>CountRun.sh
 while read line; do echo -e "$line" >>CountRun.sh ;  done < JobSubmit.sh
 echo "module use /apps/Compilers/modules-3.2.10/Debug-Build/Modules/3.2.10/modulefiles">>CountRun.sh
 echo "module load Compilers/Python3.6">>CountRun.sh
-echo "htseq-count -n 12 -f sam -m union -s reverse -r "$CountInput  $Reference"/HSNipah.gtf > "$Aligned"/counts.txt">>CountRun.sh
+echo "htseq-count -n 12 -f sam -m union -s reverse -r name "$CountInput  $Reference"/HSNipah.gtf > "$Aligned"/counts.txt">>CountRun.sh
 sbatch $DependencySam CountRun.sh
 
 exit 0
